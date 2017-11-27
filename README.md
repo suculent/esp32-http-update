@@ -10,7 +10,6 @@ Buildable with Arduino framework for ESP32.
 
 There are things remaining to be solved:
 
-* HTTPS support (require valid certificate instead of fingerprint)
+* Some headers are deprecated (will change for ESP32 anyway)
 * Download to SPIFFS with AES-256 decryption
-* Some older headers are not supported anymore
 * Does not support ESP-IDF.

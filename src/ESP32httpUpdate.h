@@ -77,25 +77,25 @@ public:
 
     // This function is deprecated, use rebootOnUpdate and the next one instead
     t_httpUpdate_return update(const String& url, const String& currentVersion,
-                               const String& httpsFingerprint, bool reboot) __attribute__((deprecated));
+                               const String& httpsCertificate, bool reboot) __attribute__((deprecated));
     t_httpUpdate_return update(const String& url, const String& currentVersion = "");
     t_httpUpdate_return update(const String& url, const String& currentVersion,
-                               const String& httpsFingerprint);
+                               const String& httpsCertificate);
 
     // This function is deprecated, use one of the overloads below along with rebootOnUpdate
     t_httpUpdate_return update(const String& host, uint16_t port, const String& uri, const String& currentVersion,
-                               bool https, const String& httpsFingerprint, bool reboot) __attribute__((deprecated));
+                               bool https, const String& httpsCertificate, bool reboot) __attribute__((deprecated));
 
     t_httpUpdate_return update(const String& host, uint16_t port, const String& uri = "/",
                                const String& currentVersion = "");
     t_httpUpdate_return update(const String& host, uint16_t port, const String& url,
-                               const String& currentVersion, const String& httpsFingerprint);
+                               const String& currentVersion, const String& httpsCertificate);
 
     // This function is deprecated, use rebootOnUpdate and the next one instead
     t_httpUpdate_return updateSpiffs(const String& url, const String& currentVersion,
-                                     const String& httpsFingerprint, bool reboot) __attribute__((deprecated));
+                                     const String& httpsCertificate, bool reboot) __attribute__((deprecated));
     t_httpUpdate_return updateSpiffs(const String& url, const String& currentVersion = "");
-    t_httpUpdate_return updateSpiffs(const String& url, const String& currentVersion, const String& httpsFingerprint);
+    t_httpUpdate_return updateSpiffs(const String& url, const String& currentVersion, const String& httpsCertificate);
 
 
     int getLastError(void);

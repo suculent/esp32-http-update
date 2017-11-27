@@ -35,10 +35,10 @@ ESP32HTTPUpdate::~ESP32HTTPUpdate(void)
 }
 
 HTTPUpdateResult ESP32HTTPUpdate::update(const String& url, const String& currentVersion,
-        const String& httpsFingerprint, bool reboot)
+        const String& httpsCertificate, bool reboot)
 {
     rebootOnUpdate(reboot);
-    return update(url, currentVersion, httpsFingerprint);
+    return update(url, currentVersion, httpsCertificate);
 }
 
 HTTPUpdateResult ESP32HTTPUpdate::update(const String& url, const String& currentVersion)
@@ -49,17 +49,19 @@ HTTPUpdateResult ESP32HTTPUpdate::update(const String& url, const String& curren
 }
 
 HTTPUpdateResult ESP32HTTPUpdate::update(const String& url, const String& currentVersion,
-        const String& httpsFingerprint)
+        const String& httpsCertificate)
 {
     HTTPClient http;
-    // TODO: FIXME: http.begin(url, httpsFingerprint);
+    const char * cacert = strdup(httpsCertificate.c_str());
+    http.begin(url, cacert);
     return handleUpdate(http, currentVersion, false);
 }
 
-HTTPUpdateResult ESP32HTTPUpdate::updateSpiffs(const String& url, const String& currentVersion, const String& httpsFingerprint)
+HTTPUpdateResult ESP32HTTPUpdate::updateSpiffs(const String& url, const String& currentVersion, const String& httpsCertificate)
 {
     HTTPClient http;
-    // TODO: FIXME: http.begin(url, httpsFingerprint);
+    const char * cacert = strdup(httpsCertificate.c_str());
+    http.begin(url, cacert);
     return handleUpdate(http, currentVersion, true);
 }
 
@@ -71,13 +73,13 @@ HTTPUpdateResult ESP32HTTPUpdate::updateSpiffs(const String& url, const String& 
 }
 
 HTTPUpdateResult ESP32HTTPUpdate::update(const String& host, uint16_t port, const String& uri, const String& currentVersion,
-        bool https, const String& httpsFingerprint, bool reboot)
+        bool https, const String& httpsCertificate, bool reboot)
 {
     rebootOnUpdate(reboot);
-    if (httpsFingerprint.length() == 0) {
+    if (httpsCertificate.length() == 0) {
         return update(host, port, uri, currentVersion);
     } else {
-        return update(host, port, uri, currentVersion, httpsFingerprint);
+        return update(host, port, uri, currentVersion, httpsCertificate);
     }
 }
 
@@ -89,10 +91,11 @@ HTTPUpdateResult ESP32HTTPUpdate::update(const String& host, uint16_t port, cons
     return handleUpdate(http, currentVersion, false);
 }
 HTTPUpdateResult ESP32HTTPUpdate::update(const String& host, uint16_t port, const String& url,
-        const String& currentVersion, const String& httpsFingerprint)
+        const String& currentVersion, const String& httpsCertificate)
 {
     HTTPClient http;
-    // TODO: FIXME: http.begin(host, port, url, httpsFingerprint);
+    const char * cacert = strdup(httpsCertificate.c_str());
+    http.begin(host, port, url, cacert);
     return handleUpdate(http, currentVersion, false);
 
 }
