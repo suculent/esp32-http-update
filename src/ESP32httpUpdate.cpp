@@ -169,7 +169,7 @@ HTTPUpdateResult ESP32HTTPUpdate::handleUpdate(HTTPClient& http, const String& c
 
     // use HTTP/1.0 for update since the update handler not support any transfer Encoding
     http.useHTTP10(true);
-    http.setTimeout(8000);
+    http.setTimeout(30000); // allow time to download on slower networks
     http.setUserAgent(F("ESP32-http-Update"));
     http.addHeader(F("x-ESP32-STA-MAC"), WiFi.macAddress());
     http.addHeader(F("x-ESP32-AP-MAC"), WiFi.softAPmacAddress());
