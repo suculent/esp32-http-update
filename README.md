@@ -6,7 +6,7 @@ ESP Clone of https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266htt
 
 # TL;DR
 
-This is just a quick port of ESP8266httpUpdate for ESP32.
+This is just a quick port of ESP8266httpUpdate for ESP32. **It is already deprecated, since Arduino Framework for ESP32 added this support officially.** See: https://github.com/espressif/arduino-esp32/tree/master/libraries/Update
 
 Buildable with Arduino framework for ESP32.
 
